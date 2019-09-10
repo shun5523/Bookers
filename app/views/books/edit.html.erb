@@ -1,0 +1,13 @@
+<h1>Edit Page</h1>
+
+<%= form_for(@book) do |f| %>
+
+	<h2>title</h2>
+	<%= f.text_field :title %>
+
+	<h2>body</h2>
+	<%= f.text_field :body %>
+
+	<%= f.submit '保存' %>
+
+<% end %>

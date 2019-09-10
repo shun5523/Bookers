@@ -1,0 +1,41 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+
+<table>
+  <thead>
+	<tr>
+		<th>Title</th>
+		<th>Body</th>
+		<th colspan="3"></th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+		<th><%= book.title %></th>
+		<th><%= book.body %></th>
+		<th><%= link_to 'show', book_path(book) %></th>
+		<th><%= link_to 'Edit', edit_book_path(book) %></th>
+		<th><%= link_to 'Destroy', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></th>
+	</tr>
+  	
+  </tbody>
+
+
+</table>
+
+<% end %>
+
+<h2>New book</h2>
+
+<%= form_for(@book) do |f| %>
+
+	<h3>title</h3>
+	<%= f.text_field :title %>
+
+	<h3>body</h3>
+	<%= f.text_field :body %>
+
+	<%= f.submit 'Creat Book' %>
+
+<% end %>
