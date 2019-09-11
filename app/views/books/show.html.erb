@@ -1,4 +1,10 @@
-詳細ページ
+
+<% if flash[:notice] %>
+<p class="flash">
+<%= flash[:notice] %>
+ </p>
+ <% end %>
+
 
 
 <h2>title</h2>
@@ -7,6 +13,6 @@
 <h2>body</h2>
 <%= @book.body %>
 
-<%= link_to "編集", edit_book_path(@book) %>
+<%= link_to "edit", edit_book_path(@book) %>
+<%= link_to "back", books_path %>
 
-<%= link_to "削除", book_path(@book), method: :delete %>

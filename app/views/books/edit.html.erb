@@ -1,6 +1,22 @@
 <h1>Edit Page</h1>
 
+<% if flash[:notice] %>
+<p class="flash">
+<%= flash[:notice] %>
+ </p>
+ <% end %>
+
 <%= form_for(@book) do |f| %>
+
+<% if @book.errors.any? %>
+<h3><%= @book.errors.count %>errors prohibited this book from being updated</h3>
+
+<ul>
+	<% @book.errors.full_messages.each do |message| %>
+	<li><%= message %></li>
+	<% end %>
+</ul>
+<% end%>
 
 	<h2>title</h2>
 	<%= f.text_field :title %>
@@ -9,5 +25,8 @@
 	<%= f.text_field :body %>
 
 	<%= f.submit '保存' %>
+
+	<%= link_to "show", book_path(@book) %>
+	<%= link_to "back", books_path %>
 
 <% end %>
